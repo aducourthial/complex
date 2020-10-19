@@ -7,6 +7,7 @@ class Complex:
     """
     My complex function :D
     """
+
     def __init__(
         self,
         a: Union[int, float, None] = None,
@@ -45,7 +46,7 @@ class Complex:
         else:
             raise ValueError("pls give polar or Cartesian coordonates")
 
-    def __add__(self, other: Union[int, float]):
+    def __add__(self, other: Union[int, float, "Complex"]) -> "Complex":
         """
 
         Parameters
@@ -54,6 +55,7 @@ class Complex:
 
         Returns
         -------
+        "Complex"
 
         """
         if isinstance(other, (int, float)):
@@ -63,7 +65,7 @@ class Complex:
         else:
             raise NotImplemented(f"Type : {type(other)} is not supported")
 
-    def __sub__(self, other: Union[int, float]):
+    def __sub__(self, other: Union[int, float, "Complex"]) -> "Complex":
         """
 
         Parameters
@@ -72,6 +74,7 @@ class Complex:
 
         Returns
         -------
+        "Complex"
 
         """
         if isinstance(other, (int, float)):
@@ -81,7 +84,7 @@ class Complex:
         else:
             raise NotImplemented(f"Type : {type(other)} is not supported")
 
-    def __mul__(self, other: Union[int, float]):
+    def __mul__(self, other: Union[int, float, "Complex"]) -> "Complex":
         """
 
         Parameters
@@ -90,6 +93,7 @@ class Complex:
 
         Returns
         -------
+        "Complex"
 
         """
         if isinstance(other, (int, float)):
@@ -101,7 +105,7 @@ class Complex:
         else:
             raise NotImplemented(f"Type : {type(other)} is not supported")
 
-    def __truediv__(self, other: Union[int, float]):
+    def __truediv__(self, other: Union[int, float, "Complex"]) -> "Complex":
         """
 
         Parameters
@@ -110,6 +114,7 @@ class Complex:
 
         Returns
         -------
+        "Complex"
 
         """
         if isinstance(other, (int, float)):
@@ -127,15 +132,38 @@ class Complex:
         else:
             raise NotImplemented(f"Type : {type(other)} is not supported")
 
-    def get_conj(self):
+    def get_conj(self) -> "Complex":
+        """
+        Returns conjugais
+
+        Returns
+        -------
+        "Complex"
+        """
         return Complex(a=self.real, b=-self.im)
 
-    def get_arg(self):
+    def get_arg(self) -> Union[int, float]:
+        """
+        Returns arguments
+
+        Returns
+        -------
+        Union[int, float]
+
+        """
         if self.arg is not None:
             return self.arg
         raise NotImplemented("I'm bad at Maths :/")
 
-    def get_module(self):
+    def get_module(self) -> Union[int, float]:
+        """
+        Returns module
+
+        Returns
+        -------
+        Union[int, float]
+
+        """
         if self.module is not None:
             return self.module
         raise NotImplemented("I'm realy bad at Maths :'/")
