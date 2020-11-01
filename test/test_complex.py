@@ -1,5 +1,5 @@
 import pytest
-from complex_main import Complex
+from complex.complex_main import Complex
 import math
 from typing import Union
 
