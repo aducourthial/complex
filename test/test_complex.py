@@ -5,33 +5,28 @@ from typing import Union
 
 
 @pytest.mark.parametrize(
-    "a ,b,r,phi,mode,res",
+    "a ,b,ttype,res",
     [
-        (1, 1, None, None, "real", 1),
-        (1, 1, None, None, "im", 1),
-        (-1, -1, None, None, "real", -1),
-        (-1, -1, None, None, "im", -1),
-        (0, 0, None, None, "real", 0),
-        (0, 0, None, None, "im", 0),
-        (None, None, None, None, "im", "ERROR"),
-        (None, None, 2, 0, "real", 2),
-        (None, None, 2, math.pi / 2, "im", 2),
+        (1, 1, "Cartesian", (1, 1)),
+        (1, 1, "Polar", (0.8414709848078965, 0.5403023058681398)),
+        (0, 0, "Cartesian", (0, 0)),
+        (1, 0, "Polar", (0, 1)),
+        (1, 1, "Cartesian", (1, 1)),
+
     ],
 )
 def test_complex_meth(
-    a: Union[int, float, None],
-    b: Union[int, float, None],
-    r: Union[int, float, None],
-    phi: Union[int, float, None],
-    mode: str,
-    res: Union[Complex, int, float],
+        a: Union[int, float],
+        b: Union[int, float],
+        ttype: str,
+        res: Union[Complex, int, float]
 ):
     if res == "ERROR":
         with pytest.raises((ZeroDivisionError, ValueError)):
-            Complex(a, b, r, phi)
+            Complex(a, b, ttype)
     else:
-        comp = Complex(a, b, r, phi)
-        assert getattr(comp, mode) == res
+        comp = Complex(a, b, ttype)
+        assert (comp.im, comp.real) == res
 
 
 @pytest.mark.parametrize(
@@ -42,7 +37,7 @@ def test_complex_meth(
     ],
 )
 def test_complex_op(
-    comp1: Complex, comp2: Complex, op: str, mode: str, res: Complex,
+        comp1: Complex, comp2: Complex, op: str, mode: str, res: Complex,
 ):
     if op == "+":
         if res == "ERROR":
