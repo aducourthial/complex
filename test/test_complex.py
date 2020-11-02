@@ -1,7 +1,8 @@
-import pytest
-from complex.complex_main import Complex
-import math
 from typing import Union
+
+import pytest
+
+from complex.complex_main import Complex
 
 
 @pytest.mark.parametrize(

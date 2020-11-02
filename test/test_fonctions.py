@@ -1,7 +1,5 @@
 import pytest
-from complex.complex_main import Complex
-import math
-from typing import Union
+
 from complex.fonctions import multi_form
 
 

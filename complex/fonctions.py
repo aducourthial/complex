@@ -1,15 +1,8 @@
 import math
 from typing import Union
 
-import dash
-from dash.exceptions import PreventUpdate
-import dash_core_components as dcc
-import dash_html_components as html
-import plotly.express as px
-import plotly.graph_objects as go
-import pandas as pd
-from flask import request
 import numpy as np
+import plotly.graph_objects as go
 
 
 def multi_form(x: Union[int, float], y: Union[int, float], ttype: str) -> dict:
